@@ -1,0 +1,11 @@
+#!/bin/bash
+
+echo "Overwriting hosts file..."
+cp -a /etc/MinimalHostsBlocker/minimalhosts /etc/hosts
+echo "Killing discoveryd/mDNSResponder..."
+killall -9 discoveryd
+killall -9 mDNSResponder
+echo "Should have died and restarted by now..."
+echo "Enjoy Minimal Hosts Blocker!"
+echo "Please let me know if you find any ads or broken sites!"
+exit 0
