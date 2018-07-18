@@ -1,0 +1,12 @@
+Package: io.sharklatan.antirevoke
+Name: antirevoke
+Depends: mobilesubstrate
+Architecture: iphoneos-arm
+Description: Bloquea actualizaciones del sistema iOS desde el core, permite instalar certificado de 7 días. Remueve Feedback Assistant App, elimina mensaje de actualización en las beta.
+Depiction: http://sharklatan.github.io/cydia/depic/shark.html
+Maintainer: sharklatan
+Author: sharklatan
+Section: JonaiPhone
+Conflicts: fun.ignition.badiosbad
+Version: 1.0
+Installed-Size: 120

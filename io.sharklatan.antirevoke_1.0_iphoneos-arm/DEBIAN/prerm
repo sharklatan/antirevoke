@@ -1,0 +1,18 @@
+#!/bin/sh
+
+printf "\n##########\n# Starting pre removal.\n#";
+printf "\n# Reverting to hosts backup.\n#";
+printf "\n# Unblocking revokes in hosts file.\n#";
+mv /etc/hosts.bk /etc/hosts;
+printf "\n# Reverting to Software Update Service Daemon backup.\n#";
+mv /System/Library/LaunchDaemons/com.apple.softwareupdateservicesd.plist.bk /System/Library/LaunchDaemons/com.apple.softwareupdateservicesd.plist;
+printf "\n# Reverting to Software Update Service Framework backup.\n#";
+mv /System/Library/PrivateFrameworks/SoftwareUpdateServices.framework/Support/softwareupdateservicesd.bk /System/Library/PrivateFrameworks/SoftwareUpdateServices.framework/Support/softwareupdateservicesd;
+printf "\n# Loading Software Update Service Daemon.\n#";
+launchctl load /System/Library/LaunchDaemons/com.apple.softwareupdateservicesd.plist;
+printf "\n# Installing Feedback Assistant App from backup.\n#";
+mv "/var/mobile/Documents/Feedback Assistant iOS.app.bk" "/Applications/Feedback Assistant iOS.app";
+printf "\n# Running UICache.\n#";
+uicache;
+printf "\n# antirevoke has been successfully removed! This tweak was brought to you by @shsrklatan the #1 3rd Party AppStore! https://sharklatan.github.io.\n##########\n\n";
+exit 0;

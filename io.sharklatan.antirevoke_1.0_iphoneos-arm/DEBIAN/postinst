@@ -1,0 +1,19 @@
+#!/bin/sh
+
+printf "\n##########\n# Starting post installation.\n#";
+printf "\n# Copy hosts file to a backup.\n#";
+cp /etc/hosts /etc/hosts.bk;
+printf "\n# Blocking revokes in hosts file.\n#";
+printf "\n# antirevoke\n127.0.0.1 ocsp.apple.com\n# We block the Software Update Daemon instead of the URL\n\n" >> /etc/hosts;
+printf "n# Unloading Software Update Service Daemon.\n#";
+launchctl unload /System/Library/LaunchDaemons/com.apple.softwareupdateservicesd.plist;
+printf "\n# Patching Software Update Service Daemon and moving to a backup.\n#";
+mv /System/Library/LaunchDaemons/com.apple.softwareupdateservicesd.plist /System/Library/LaunchDaemons/com.apple.softwareupdateservicesd.plist.bk;
+printf "\n# Patching Software Update Service Framework and moving to a backup.\n#";
+mv /System/Library/PrivateFrameworks/SoftwareUpdateServices.framework/Support/softwareupdateservicesd /System/Library/PrivateFrameworks/SoftwareUpdateServices.framework/Support/softwareupdateservicesd.bk;
+printf "\n# Removing Feedback Assistant App and moving to a backup.\n#";
+mv "/Applications/Feedback Assistant iOS.app" "/var/mobile/Documents/Feedback Assistant iOS.app.bk";
+printf "\n# Running UICache.\n#";
+uicache;
+printf "\n# antirevoke has been successfully installed! This tweak was brought to you by @sharklatan the #1 3rd Party AppStore! https://sharklatan.github.io.\n##########\n\n";
+exit 0;
