@@ -15,5 +15,5 @@ printf "\n# Removing Feedback Assistant App and moving to a backup.\n#";
 mv "/Applications/Feedback Assistant iOS.app" "/var/mobile/Documents/Feedback Assistant iOS.app.bk";
 printf "\n# Running UICache.\n#";
 uicache;
-printf "\n# antirevoke has been successfully installed! This tweak was brought to you by @sharklatan the #1 3rd Party AppStore! https://sharklatan.github.io.\n##########\n\n";
+printf "\n# antirevoke has been successfully installed! This tweak was brought to you by @sharklatan https://sharklatan.github.io.\n##########\n\n";
 exit 0;
